@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance</title>
+    <style>
+    body {
+      background-color: #dff;
+      border-radius: 8px;
+      padding: 1em;
+    }
+  </style>
+</head>
+<body >
+<h1  style="color:red">Attendance</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Duration</th>
+    <th>Percentage</th>
+  </tr>
+    {% for att in attendance %}
+      <tr>
+    <td>{{ att['Name'] }}</td>
+    <td>{{ att['Duration'] }}</td>
+    <td>{{ att['Percentage'] }}</td>
+
+      </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

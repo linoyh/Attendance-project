@@ -1,0 +1,42 @@
+---
+version: '3.10'
+
+services:
+  app:
+    build: /home/linoy/exercises/for_practice/docker-flask-app-att/app
+    ports:
+         - '5001:5000'
+    working_dir: /app
+    # defining the environmental environments for mysql
+    environment:
+      MYSQL_DATABASE: ${CONTAINER_DB_NAME}
+      # using unprivileged user to run the queries
+      MYSQL_USER: ${CONTAINER_DB_USER}
+      # password for the unprivileged user
+      MYSQL_PASSWORD: ${CONTAINER_DB_PWD}
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: ${CONTAINER_DB_ROOT_PWD}
+    links:
+      - db
+
+  db:
+    image: mysql:latest
+    # defining the environmental environments for mysql
+    environment:
+      MYSQL_DATABASE: ${CONTAINER_DB_NAME}
+      # using unprivileged user to run the queries
+      MYSQL_USER: ${CONTAINER_DB_USER}
+      # password for the unprivileged user
+      MYSQL_PASSWORD: ${CONTAINER_DB_PWD}
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: ${CONTAINER_DB_ROOT_PWD}
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3307:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # create a read only vol in the docker containet
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+
