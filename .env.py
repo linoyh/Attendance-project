@@ -16,15 +16,16 @@ MYSQL_ATTENDANCE_PWD="12345"
 MYSQL_DB_NAME="linoyhdb"
 
 #DB container details
-CONTAINER_DB_HOST='db'
-CONTAINER_DB_USER="jeff"
-CONTAINER_DB_PWD="12345"
-CONTAINER_DB_ROOT_PWD='123456'
-CONTAINER_DB_NAME="linoy_attendance"
+
+CONTAINER_DB_HOST="db"
 CONTAINER_DB_PORT='3306'
+MYSQL_DATABASE='linoy_attendance'
+MYSQL_USER="jeff"
+MYSQL_PASSWORD="12345"
+MYSQL_ROOT_PASSWORD='123456'
 
 #my VBox machine- connect to my local DB
 REMOTE_DIR_PATH='/var/tmp/csv_files'
-LOCAL_ORIGIN_DIR_PATH='/home/linoy/exercises/for_practice/docker-flask-app-att/app/csv_files_origin'
-FINAL_CSV_DIR_PATH='/home/linoy/exercises/for_practice/docker-flask-app-att/app/csv_files_final'
-FINAL_ATT_FILE='/home/linoy/exercises/for_practice/docker-flask-app-att/app/csv_files_final/final_par_file.csv'
+LOCAL_ORIGIN_DIR_PATH='/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_origin'
+FINAL_CSV_DIR_PATH='/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_final'
+FINAL_ATT_FILE='/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_final/final_par_file.csv'

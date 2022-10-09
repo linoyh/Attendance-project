@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import pysftp
 from dotenv import load_dotenv
 import os
@@ -5,7 +6,7 @@ import sys
 
 
 def activate_sftp():
-    load_dotenv("/home/linoy/exercises/for_practice/docker-flask-app-att/.env.py")
+    load_dotenv("/home/linoy/exercises/for_practice/Attendance-project/.env.py")
     remote_course_machine = os.getenv('REMOTE_COURSE_MACHINE')
     remote_user = os.getenv('REMOTE_USER')
     remote_password = os.getenv('REMOTE_PASS')

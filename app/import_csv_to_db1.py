@@ -9,6 +9,15 @@ import datetime
 # in order to evoid writing passwords in the code i will use dotenv to query environment variable (also os.environ is a good option)
 # using .get() to evoid erors >> if we will get error it would take the 2nd param
 
+load_dotenv("/home/linoy/exercises/for_practice/Attendance-project/.env.py")
+CONTAINER_DB_HOST = os.getenv('CONTAINER_DB_HOST')
+CONTAINER_DB_USER = os.getenv('MYSQL_USER')
+CONTAINER_DB_PWD = os.getenv('MYSQL_PASSWORD')
+CONTAINER_DB_NAME = os.getenv('MYSQL_DATABASE')
+CONTAINER_DB_PORT = os.getenv('CONTAINER_DB_PORT')
+conn_db = MySQLdb.connect(host=CONTAINER_DB_HOST, port=CONTAINER_DB_PORT, user=CONTAINER_DB_USER,
+                          password=CONTAINER_DB_PWD, database=CONTAINER_DB_NAME)
+'''
 load_dotenv("/home/linoy/exercises/for_practice/docker-flask-app-att/.env.py")
 CONTAINER_DB_HOST=os.getenv('CONTAINER_DB_HOST')
 CONTAINER_DB_USER=os.getenv('CONTAINER_DB_USER')
@@ -16,7 +25,7 @@ CONTAINER_DB_PWD=os.getenv('CONTAINER_DB_PWD')
 CONTAINER_DB_NAME=os.getenv('CONTAINER_DB_NAME')
 CONTAINER_DB_PORT=os.getenv('CONTAINER_DB_PORT')
 conn_db = MySQLdb.connect(host=CONTAINER_DB_HOST, port=CONTAINER_DB_PORT, user=CONTAINER_DB_USER, password=CONTAINER_DB_PWD, database=CONTAINER_DB_NAME)
-
+'''
 cursor = conn_db.cursor()
 cursor.execute("SHOW tables;")
 m = cursor.fetchall()

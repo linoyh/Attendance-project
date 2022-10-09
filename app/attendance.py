@@ -69,10 +69,9 @@ def merge_csv_files_to_one(joined_list, total_meetings_time):
 # The main function that control the script
 # all the actions and calls describesin here by the order
 if __name__ == "__main__":
-    load_dotenv("/home/linoy/exercises/for_practice/docker-flask-app-att/.env.py")
+    load_dotenv("/home/linoy/exercises/for_practice/Attendance-project/.env.py")
     input_dir_path = os.getenv('LOCAL_ORIGIN_DIR_PATH')
     output_dir_path = os.getenv('FINAL_CSV_DIR_PATH')
-    print(input_dir_path)
     is_dir(input_dir_path)
     files_list = get_files_names_from_dir(input_dir_path)
     joined_list, total_meetings_time = df_treatments(files_list)
