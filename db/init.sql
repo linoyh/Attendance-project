@@ -1,9 +1,12 @@
-CREATE DATABASE [IF NOT EXISTS] linoy_attendance;
-use linoy_attendance;
+CREATE DATABASE if not exists linoy_attendance;
 
-CREATE USER jeff indentified by '12345';
+USE linoy_attendance;
 
-grant all privileges on `linoy_attendance`.* to jeff;
+DROP USER `jeff`;
+
+CREATE USER 'jeff'@'%' IDENTIFIED BY '12345';
+
+GRANT ALL PRIVILEGES ON `linoy_attendance_%`.* to jeff;
 
 CREATE TABLE if not exists final_attendance (
     id integer not null auto_increment primary key,

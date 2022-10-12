@@ -5,12 +5,16 @@ services:
   app:
     build: ./app
     ports:
-         - '5001:5000'
+         - '5000:5000'
     working_dir: /app
     # defining the environmental environments for mysql
     env_file: ./.env.py
+    # network link to db container
     links:
       - db
+    deploy:
+      restart_policy:
+        condition: any
 
   db:
     image: mysql:latest

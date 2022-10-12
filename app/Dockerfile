@@ -2,11 +2,8 @@
 FROM python:3.7-slim
 ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
 
-# The EXPOSE instruction indicates the ports on which a container
-EXPOSE 5000
-
 #define the env variables flask use
-ENV FLASK_APP=myapp.py
+ENV FLASK_APP=app.py
 ENV FLASK_RUN_HOST=0.0.0.0
 
 # Sets the working directory for following COPY and CMD instructions
@@ -18,15 +15,19 @@ RUN apt-get update -y && apt-get install build-essential -y && apt-get install a
 RUN addgroup --system --gid 1001 attendance_group && adduser --system --uid 1002 attendance_user --gid 1001
 USER attendance_user
 COPY ./requirements.txt requirements.txt
-RUN python -m pip install --upgrade pip
+#RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
+
+# The EXPOSE instruction indicates the ports on which a container
+EXPOSE 5000
 
 # Run app.py when the container launches by the unpriviliged user
 USER root
 CMD ["chmod", "u+x", "*.py"]
 USER attendance_user
-COPY . . 
-CMD python3 myapp.py
+COPY . .
+CMD [ "python3", "-m", "flask", "run"]
+#CMD python3 app.py
 
 
 

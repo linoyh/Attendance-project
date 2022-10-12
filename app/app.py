@@ -8,6 +8,8 @@ import subprocess
 #using bash set command -x the shell throws logs, -u throws a error if there is undefines variable, -e exit the terminal if the exit code is not 0
 os.system("set -exu")
 
+app = Flask(__name__)
+
 def db_connection():
   load_dotenv("/home/linoy/exercises/for_practice/Attendance-project/.env.py")
   CONTAINER_DB_HOST = os.getenv('CONTAINER_DB_HOST')
@@ -44,7 +46,6 @@ def json_att(att_quary):
   return json_att_ready
 
 
-app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -57,5 +58,6 @@ if __name__ == "__main__":
   subprocess.call("python3 import_csv_to_db1.py", shell=True)
   att_quary = db_connection()
   json_att(att_quary)
-  app.run()
+  
+  app.run(host='0.0.0.0', debug=True, port=5000)
 
