@@ -1,14 +1,14 @@
 # Use an official Python runtime as an image
 FROM python:3.7-slim
-ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
-
-#define the env variables flask use
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
+#ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
 
 # Sets the working directory for following COPY and CMD instructions
 # creates a directory with this name if it doesn’t exist
 WORKDIR /app
+
+#define the env variables flask use
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
 
 #create a system unpriviliged user for runing my application 1001 = group id and user id
 RUN apt-get update -y && apt-get install build-essential -y && apt-get install apt-utils -y && apt-get install libmariadb-dev -y && apt-get install libmariadb-dev-compat -y
@@ -26,6 +26,7 @@ USER root
 CMD ["chmod", "u+x", "*.py"]
 USER attendance_user
 COPY . .
+#CMD ["flask", "run"]
 CMD [ "python3", "-m", "flask", "run"]
 #CMD python3 app.py
 
