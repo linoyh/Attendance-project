@@ -31,7 +31,6 @@ def db_connection():
   cursor = conn_db.cursor()
   cursor.execute("SELECT * FROM final_attendance;")
   att_quary = cursor.fetchall()
-
   return att_quary
 
 def json_att(att_quary):
@@ -45,11 +44,9 @@ def json_att(att_quary):
     json_att_ready.append(obj)
   return json_att_ready
 
-
-
 @app.route('/')
-def index():
-  return render_template('index.html', attendance=json_att(att_quary))
+def index(json_att_ready):
+  return render_template('index.html', attendance=json_att_ready)
 
 #The main function run all the other scripts one by one, finally present the DB data in the browser
 if __name__ == "__main__":
@@ -57,7 +54,7 @@ if __name__ == "__main__":
   subprocess.call("python3 attendance.py", shell=True)
   subprocess.call("python3 import_csv_to_db1.py", shell=True)
   att_quary = db_connection()
-  json_att(db_connection())
-  
+  print(att_quary)
+  json_att_ready = json_att(att_quary)
   app.run(host='0.0.0.0', debug=True, port=5000)
 

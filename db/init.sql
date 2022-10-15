@@ -4,9 +4,9 @@ USE linoy_attendance;
 
 DROP USER `jeff`;
 
-CREATE USER 'jeff'@'%' IDENTIFIED BY '12345';
+CREATE USER 'jeff' IDENTIFIED BY '12345';
 
-GRANT ALL PRIVILEGES ON `linoy_attendance_%`.* to jeff;
+GRANT ALL PRIVILEGES ON `linoy_attendance`.* to jeff;
 
 CREATE TABLE if not exists final_attendance (
     id integer not null auto_increment primary key,

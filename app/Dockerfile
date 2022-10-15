@@ -23,12 +23,11 @@ EXPOSE 5000
 
 # Run app.py when the container launches by the unpriviliged user
 USER root
-CMD ["chmod", "u+x", "*.py"]
+CMD ["chmod", "755", "*"]
 USER attendance_user
 COPY . .
-#CMD ["flask", "run"]
-CMD [ "python3", "-m", "flask", "run"]
-#CMD python3 app.py
+CMD ["python3", "./app.py"]
+#CMD [ "python3", "-m", "flask", "run"]
 
 
 

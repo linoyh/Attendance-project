@@ -1,6 +1,7 @@
 Flask
 Flask-Cors
 Jinja2
+pandas
 mysqlclient
 paramiko
 pysftp
