@@ -10,6 +10,8 @@ services:
     # defining the environmental environments for mysql
     env_file: ./.env.py
     # network link to db container
+    #volumes: 
+    #  - /csv_files_origin_offline:/app/csv_files_origin_offline 
     links:
       - db
     deploy:

@@ -17,7 +17,7 @@ def db_connection():
   CONTAINER_DB_PWD = os.getenv('MYSQL_PASSWORD')
   CONTAINER_DB_NAME = os.getenv('MYSQL_DATABASE')
   CONTAINER_DB_PORT = os.getenv('CONTAINER_DB_PORT')
-  conn_db = MySQLdb.connect(host=CONTAINER_DB_HOST, port=CONTAINER_DB_PORT, user=CONTAINER_DB_USER, password=CONTAINER_DB_PWD, database=CONTAINER_DB_NAME)
+  conn_db = MySQLdb.connect(host=CONTAINER_DB_HOST, port=int(CONTAINER_DB_PORT), user=CONTAINER_DB_USER, password=CONTAINER_DB_PWD, database=CONTAINER_DB_NAME)
 
   '''
   load_dotenv(".env.py")
@@ -44,8 +44,10 @@ def json_att(att_quary):
     json_att_ready.append(obj)
   return json_att_ready
 
+json_att_ready = None
+
 @app.route('/')
-def index(json_att_ready):
+def index():
   return render_template('index.html', attendance=json_att_ready)
 
 #The main function run all the other scripts one by one, finally present the DB data in the browser
@@ -54,7 +56,10 @@ if __name__ == "__main__":
   subprocess.call("python3 attendance.py", shell=True)
   subprocess.call("python3 import_csv_to_db1.py", shell=True)
   att_quary = db_connection()
+  print("att_quary")
   print(att_quary)
   json_att_ready = json_att(att_quary)
+  print("json linoy")
+  print(json_att_ready)
   app.run(host='0.0.0.0', debug=True, port=5000)
 

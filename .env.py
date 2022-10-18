@@ -26,6 +26,9 @@ MYSQL_ROOT_PASSWORD='123456'
 
 #my VBox machine- connect to my local DB
 REMOTE_DIR_PATH='/var/tmp/csv_files'
-LOCAL_ORIGIN_DIR_PATH='/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_origin'
-FINAL_CSV_DIR_PATH='/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_final'
-FINAL_ATT_FILE='/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_final/final_par_file.csv'
+LOCAL_ORIGIN_DIR_PATH='./csv_files_origin'
+#'/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_origin'
+FINAL_CSV_DIR_PATH='./csv_files_final'
+#'/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_final'
+FINAL_ATT_FILE='./csv_files_final/final_par_file.csv'
+#'/home/linoy/exercises/for_practice/Attendance-project/app/csv_files_final/final_par_file.csv'
