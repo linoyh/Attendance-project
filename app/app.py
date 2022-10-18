@@ -56,10 +56,6 @@ if __name__ == "__main__":
   subprocess.call("python3 attendance.py", shell=True)
   subprocess.call("python3 import_csv_to_db1.py", shell=True)
   att_quary = db_connection()
-  print("att_quary")
-  print(att_quary)
   json_att_ready = json_att(att_quary)
-  print("json linoy")
-  print(json_att_ready)
   app.run(host='0.0.0.0', debug=True, port=5000)
 
