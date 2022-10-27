@@ -1,71 +1,32 @@
 # Attendance
 
-Attendance is an app for calculate the Attendance amount for the Devops course participants.
+Attendance is an app for calculate the Attendance time rates for the Devops 8200-dev-bynet course participants.
 
 ## Installation
+cd into the docker-compose direcory location and write the command:
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
-
-## Usage
-
-```python
-attendance.py <csv_attendance_files_path>
-# returns attendance by date
-# returns final attendance file with percentages
-
-## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-```bash
-pip install foobar
-```
-
-## Usage
-
-```python
-import foobar
-
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
+docker-compose up --build
 
 ## preparation
-Table was created in the linoyhdb database with the csv default columns(except the 1st anf last):
 
-use linoyhdb;
+There are 2 docker containers in the project:
+#### mysqldb 
+pulled from docker hub by docker-compose.
+init.sql file do all the db quaries - create linoy_attendance db
+using special priviliged user to create attendance_csv table- contain all csv files from the course and final_attendance the main table which contain the proccessed data from the attendance.py script
+#### app
+created by docker file, build by it and defined in the docker-compose 
+ 
+#### app.py
+activated by the docker file "CMD ["python3", "./app.py"]"
 
-CREATE TABLE attendance_csv (id integer not null auto_increment primary key, `meeting start time` timestamp, `meeting end time` timestamp, name varchar(128),  email varchar(128) not null, `join time` timestamp, `leaving time` timestamp, `attendance duration` varchar(128));
+attached to templates directory which contain index.html - our frontend to present the project nicely in the browser
+activate 3 scripts:
+* sftp_csv.py- takes all the csv files fron the remote course machine into the db container
+* attendance.py -the main backend script - 
+* import_csv_to_db1.py - import the final csv file - the final result of the attendance script to the db
 
-jeff user is granted all priviliges on the DB - he is the user making the quaries
 
-.env file with environment variables for the DB connection is included in order of not expose personal info for everyone
+#### .env file
+contain  environment variables for all the scripts and logics 
 
-The csv files were taken fron the course remote AWS serves via SFTP bt pysftp module
-## License
-[MIT](https://choosealicense.com/licenses/mit/)obar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)

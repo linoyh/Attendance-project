@@ -5,7 +5,8 @@ services:
   app:
     build: ./app
     ports:
-         - '5000:5000'
+      #left- local server : right: flask
+      - '5000:5000'
     working_dir: /app
     # defining the environmental environments for mysql
     env_file: ./.env.py
