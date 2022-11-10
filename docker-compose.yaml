@@ -21,7 +21,7 @@ services:
 
   db:
     image: mysql:latest
-    env_file: ./.env.py
+    env_file: ./.env
     ports:
       # <Port exposed> : < MySQL Port running inside container>
       - '3307:3306'
