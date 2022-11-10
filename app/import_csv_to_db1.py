@@ -9,7 +9,7 @@ import datetime
 # in order to evoid writing passwords in the code i will use dotenv to query environment variable (also os.environ is a good option)
 # using .get() to evoid erors >> if we will get error it would take the 2nd param
 
-load_dotenv("./.env.py")
+load_dotenv("./.env")
 CONTAINER_DB_HOST = os.getenv('CONTAINER_DB_HOST')
 CONTAINER_DB_USER = os.getenv('MYSQL_USER')
 CONTAINER_DB_PWD = os.getenv('MYSQL_PASSWORD')

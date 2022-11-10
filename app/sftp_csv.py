@@ -7,7 +7,7 @@ import sys
 
  
 def activate_sftp():
-    load_dotenv("./.env.py")
+    load_dotenv("./.env")
     remote_course_machine = os.getenv('REMOTE_COURSE_MACHINE')
     remote_user = os.getenv('REMOTE_USER')
     remote_password = os.getenv('REMOTE_PASS')

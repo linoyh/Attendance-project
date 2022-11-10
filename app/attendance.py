@@ -69,7 +69,7 @@ def merge_csv_files_to_one(joined_list, total_meetings_time):
 # The main function that control the script
 # all the actions and calls describesin here by the order
 if __name__ == "__main__":
-    load_dotenv("./.env.py")
+    load_dotenv("./.env")
     input_dir_path = os.getenv('LOCAL_ORIGIN_DIR_PATH')
     output_dir_path = os.getenv('FINAL_CSV_DIR_PATH')
     #os.chmod(input_dir_path, int(os.getenv('SUDO_UID')), int(os.getenv('SUDO_GID')), 777)

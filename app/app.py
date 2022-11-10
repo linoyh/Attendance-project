@@ -11,7 +11,7 @@ os.system("set -exu")
 app = Flask(__name__)
 
 def db_connection():
-  load_dotenv("./.env.py")
+  load_dotenv("./.env")
   CONTAINER_DB_HOST = os.getenv('CONTAINER_DB_HOST')
   CONTAINER_DB_USER = os.getenv('MYSQL_USER')
   CONTAINER_DB_PWD = os.getenv('MYSQL_PASSWORD')
