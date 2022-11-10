@@ -30,3 +30,4 @@ activate 3 scripts:
 #### .env file
 contain  environment variables for all the scripts and logics 
 
+
